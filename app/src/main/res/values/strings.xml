@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Assignment 1</string>
+    <string name="enter_Number_Edit">enterNumbers</string>
+    <string name="btn1">1</string>
+    <string name="btn2">2</string>
+    <string name="btn3">3</string>
+    <string name="btn4">4</string>
+    <string name="btn5">5</string>
+    <string name="btn6">6</string>
+    <string name="btn7">7</string>
+    <string name="btn8">8</string>
+    <string name="btn9">9</string>
+    <string name="btn0">0</string>
+    <string name="btn_plus">+</string>
+    <string name="btn_minus">-</string>
+    <string name="btn_times">*</string>
+    <string name="btn_divide">/</string>
+    <string name="btnClear">C</string>
+    <string name="btnEqual">=</string>
+    <string name="app_title">Assignment 1</string>
+    <string name="btn_history">Standard - No history</string>
+    <string name="historyShow">Show History</string>
+    <string name="btn_Nohistory">Standard - No History</string>
+    <string name="btn_withHistory">Advance - With History</string>
+</resources>

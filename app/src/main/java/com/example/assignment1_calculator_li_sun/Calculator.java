@@ -7,17 +7,20 @@ public class Calculator {
 
     ArrayList<String> inputs =new ArrayList<String>();
     ArrayList<String> history=new ArrayList<>();
-    int current_index = 0;
+    int mode; // 0: basic, 1: advance
    ArrayList<Calculator> listOfCalculations=new ArrayList<>();
 
 
     public static final String CLEAR = "C";
 
     public Calculator() {
-        //mCalculatorHistory = 0;
+        mode = 0;
     }
 
-
+    public  void setMode(int mode) {
+        this.mode = mode;
+        history.clear();
+    }
 
 
     public void push(String value){
@@ -32,6 +35,10 @@ public class Calculator {
         }
         return historyResult;
 
+    }
+
+    public void clear() {
+        inputs.clear();
     }
 
     int calculate(){
@@ -62,13 +69,16 @@ public class Calculator {
             }
             i+=2;
         }
-        String singleElement="";
-        for(int j=0; j<inputs.size();j++){
-            singleElement+=" "+ inputs.get(j);
 
+        if( mode == 1) {
+            String singleElement="";
+            for(int j=0; j<inputs.size();j++){
+                singleElement+=" "+ inputs.get(j);
+
+            }
+            singleElement = singleElement + "=" + num1;
+            history.add(singleElement);
         }
-        singleElement=singleElement+"="+num1;
-        history.add(singleElement);
 
         inputs.clear();
 

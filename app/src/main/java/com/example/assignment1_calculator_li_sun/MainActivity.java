@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class MainActivity<onclick> extends AppCompatActivity implements View.OnClickListener {
 
@@ -34,7 +37,8 @@ public class MainActivity<onclick> extends AppCompatActivity implements View.OnC
     TextView history_View;
 
     Calculator calculator = new Calculator();
-    //CalculatorManager calculatorManager;
+
+
 
 
     @Override
@@ -84,49 +88,40 @@ public class MainActivity<onclick> extends AppCompatActivity implements View.OnC
         buttonAdvanced.setOnClickListener(this);
 
 
-        //CalculatorManager calculatorManager=new CalculatorManager();
-
     }
 
 
     @Override
     public void onClick(View v) {
-
-
         if(v==buttonEqual) {
             //String data = ((Button) v).getText().toString();
-
-
             int total = calculator.calculate();
             String new_result = (String) resultView.getText();
             String buttonText=((Button) v).getText().toString();
-            String historyViewItem=new_result+buttonText+total;
-            resultView.setText(historyViewItem);
+            String operationViewItem=new_result+buttonText+total;
+            resultView.setText(operationViewItem);
+
+            String historyShow=calculator.getHistory();
+            history_View.setText(historyShow);
         }
         else if(v==buttonClear){
-
            resultView.setText(" ");
-
+           calculator.clear();
         }
         else if(v==buttonStandard){
-            Button buttonS=(Button)v;
-            buttonS.setVisibility(View.GONE);
-            buttonAdvanced.setVisibility(View.VISIBLE);
+               Button buttonS=(Button)v;
+               buttonS.setVisibility(View.INVISIBLE);
+               buttonAdvanced.setVisibility(View.VISIBLE);
+               history_View.setVisibility(View.INVISIBLE);
+            calculator.setMode(0);
 
-        }
-        else if(v==buttonAdvanced){
+        } else if(v==buttonAdvanced){
+               Button buttonS=(Button)v;
+               buttonS.setVisibility(View.GONE);
+               buttonStandard.setVisibility(View.VISIBLE);
+               calculator.setMode(1);
 
-            int total = calculator.calculate();
-            String new_result = (String) resultView.getText();
-            String buttonText=((Button) v).getText().toString();
-            String historyViewItem=new_result+buttonText+total;
-           // calculatorManager.addNewCalculations(calculator);
-            //builder.create();
-
-
-
-            //history_View.append(historyViewItem);
-
+                history_View.setVisibility(View.VISIBLE);
         }
         else{
             Button b=(Button)v;
@@ -135,6 +130,7 @@ public class MainActivity<onclick> extends AppCompatActivity implements View.OnC
             String new_result = (String) resultView.getText();
 
             resultView.setText(new_result+" "+buttonText);
+            //history_View.setText(new_result+" "+buttonText);
         }
 
     }

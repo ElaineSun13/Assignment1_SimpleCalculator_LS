@@ -293,35 +293,32 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="10dp">
 
         <Button
             android:id="@+id/btn_standard"
             android:layout_width="310dp"
-            android:layout_height="60dp"
-
+            android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:backgroundTint="@color/purple_500"
             android:shadowColor="@color/black"
-
             android:text="@string/btn_Nohistory"
             android:textAllCaps="true"
             android:textColor="@color/black"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:visibility="invisible"/>
+
         <Button
             android:id="@+id/btn_advance"
             android:layout_width="310dp"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:backgroundTint="@color/purple_500"
-            android:visibility="invisible"
             android:text="@string/btn_withHistory"
-
             android:textAllCaps="true"
             android:textColor="@color/black"
-
             android:textSize="15sp" />
 
 
@@ -329,16 +326,16 @@
     <TextView
         android:id="@+id/historyView"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="130dp"
         android:gravity="left"
         android:layout_gravity="center"
-        android:visibility="invisible"
         android:layout_marginStart="41dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="48dp"
         android:layout_marginBottom="40dp"
         android:background="@android:color/white"
         android:text="@string/historyShow"
+        android:visibility="invisible"
         android:textColor="@color/sysLtGray"
         android:textSize="25sp" />
 

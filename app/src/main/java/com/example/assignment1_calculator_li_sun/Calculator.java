@@ -1,26 +1,22 @@
 package com.example.assignment1_calculator_li_sun;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Calculator {
 
     ArrayList<String> inputs =new ArrayList<String>();
+    ArrayList<String> history=new ArrayList<>();
     int current_index = 0;
-    ArrayList<Calculator> showHistory=new ArrayList<>();
+   ArrayList<Calculator> listOfCalculations=new ArrayList<>();
 
-    //operator type
-    public static final String Add = "+";
-    public static final String SUBTRACT = "-";
-    public static final String TIMES = "*";
-    public static final String Divide = "/";
 
     public static final String CLEAR = "C";
 
     public Calculator() {
         //mCalculatorHistory = 0;
-
-
     }
+
 
 
 
@@ -28,7 +24,15 @@ public class Calculator {
         inputs.add(value);
     }
 
+    public String getHistory(){
+        String historyResult="";
+        for(int i=0; i<history.size();i++){
+            historyResult+=history.get(i)+"\n";
 
+        }
+        return historyResult;
+
+    }
 
     int calculate(){
         int len = inputs.size();
@@ -58,23 +62,21 @@ public class Calculator {
             }
             i+=2;
         }
+        String singleElement="";
+        for(int j=0; j<inputs.size();j++){
+            singleElement+=" "+ inputs.get(j);
+
+        }
+        singleElement=singleElement+"="+num1;
+        history.add(singleElement);
 
         inputs.clear();
+
 
         return num1;
     }
 
 
-    public static class CalculationManager { //app model
-        //collection of calculations
-        ArrayList<Calculator> listOfCalculations = new ArrayList<>(0);
-        public ArrayList<Calculator> getListOfCalculations() {
-            return listOfCalculations;
-        }
 
-        public void addNewCalculations(Calculator d){
-            listOfCalculations.add(d);
-        }
-
-    }
 }
+

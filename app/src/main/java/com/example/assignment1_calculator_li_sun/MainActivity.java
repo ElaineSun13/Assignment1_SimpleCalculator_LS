@@ -1,5 +1,6 @@
 package com.example.assignment1_calculator_li_sun;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -7,9 +8,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.content.DialogInterface;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.security.InvalidParameterException;
+import java.text.NumberFormat;
 
 
 public class MainActivity<onclick> extends AppCompatActivity implements View.OnClickListener {
@@ -37,6 +41,9 @@ public class MainActivity<onclick> extends AppCompatActivity implements View.OnC
     TextView history_View;
 
     Calculator calculator = new Calculator();
+    AlertDialog.Builder builder;
+
+
 
 
 
@@ -66,6 +73,7 @@ public class MainActivity<onclick> extends AppCompatActivity implements View.OnC
        history_View=findViewById(R.id.historyView);
        resultView=findViewById(R.id.result);
        resultView.setText(" ");
+        builder = new AlertDialog.Builder(this);
         //outlet
         button1.setOnClickListener(this);
         button2.setOnClickListener(this);
@@ -86,42 +94,65 @@ public class MainActivity<onclick> extends AppCompatActivity implements View.OnC
         buttonEqual.setOnClickListener(this);
         buttonStandard.setOnClickListener(this);
         buttonAdvanced.setOnClickListener(this);
-
-
     }
 
-
-    @Override
+      @Override
     public void onClick(View v) {
         if(v==buttonEqual) {
-            //String data = ((Button) v).getText().toString();
-            int total = calculator.calculate();
-            String new_result = (String) resultView.getText();
-            String buttonText=((Button) v).getText().toString();
-            String operationViewItem=new_result+buttonText+total;
-            resultView.setText(operationViewItem);
+            try{
+                int  total = calculator.calculate();
+                String new_result = (String) resultView.getText();
+                String buttonText=((Button) v).getText().toString();
+                String operationViewItem=new_result+buttonText+total;
+                resultView.setText(operationViewItem);
 
-            String historyShow=calculator.getHistory();
-            history_View.setText(historyShow);
+                String historyShow=calculator.getHistory();
+                history_View.setText(historyShow);
+
+            }
+
+            catch(InvalidParameterException e){
+                builder.setMessage(e.getMessage() );
+                builder.setTitle(R.string.errorMessage);
+;
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Log.d("Calculation App","in dialog ok button");
+                        resultView.setText("");
+                    }
+                });
+//                builder.setNegativeButton("Cancle", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+//                        Log.d("Calculation App","in dialog cancel button");
+//                    }
+//                });
+                builder.show();
+//                resultView.setText("");
+            }
+
         }
         else if(v==buttonClear){
            resultView.setText(" ");
            calculator.clear();
         }
         else if(v==buttonStandard){
+               resultView.setText("");
                Button buttonS=(Button)v;
-               buttonS.setVisibility(View.INVISIBLE);
+               buttonS.setVisibility(View.GONE);
                buttonAdvanced.setVisibility(View.VISIBLE);
                history_View.setVisibility(View.INVISIBLE);
-            calculator.setMode(0);
+               calculator.setMode(0);
+
 
         } else if(v==buttonAdvanced){
+               resultView.setText("");
                Button buttonS=(Button)v;
                buttonS.setVisibility(View.GONE);
                buttonStandard.setVisibility(View.VISIBLE);
                calculator.setMode(1);
-
-                history_View.setVisibility(View.VISIBLE);
+               history_View.setVisibility(View.VISIBLE);
         }
         else{
             Button b=(Button)v;

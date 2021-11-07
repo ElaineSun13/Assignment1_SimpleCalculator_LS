@@ -245,44 +245,38 @@
             android:textColor="@color/black"
 
             android:textSize="20sp" />
+
         <Button
             android:id="@+id/btn_zero"
             android:layout_width="85dp"
             android:layout_height="50dp"
-
             android:layout_gravity="center"
             android:layout_weight="1"
             android:backgroundTint="@color/sysRed"
-
             android:text="@string/btn0"
             android:textColor="@color/black"
-
             android:textSize="20sp" />
+
         <Button
             android:id="@+id/btn_equal"
             android:layout_width="85dp"
             android:layout_height="50dp"
-
             android:layout_gravity="center"
             android:layout_weight="1"
             android:backgroundTint="@color/sysRed"
-
             android:text="@string/btnEqual"
             android:textColor="@color/black"
-
             android:textSize="20sp" />
+
         <Button
             android:id="@+id/btn_divide"
             android:layout_width="85dp"
             android:layout_height="50dp"
-
             android:layout_gravity="center"
             android:layout_weight="1"
             android:backgroundTint="@color/sysRed"
-
             android:text="@string/btn_divide"
             android:textColor="@color/black"
-
             android:textSize="20sp" />
 
 
@@ -307,7 +301,7 @@
             android:textAllCaps="true"
             android:textColor="@color/black"
             android:textSize="15sp"
-            android:visibility="invisible"/>
+            android:visibility="gone"/>
 
         <Button
             android:id="@+id/btn_advance"
@@ -323,20 +317,26 @@
 
 
     </LinearLayout>
-    <TextView
-        android:id="@+id/historyView"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:gravity="left"
-        android:layout_gravity="center"
-        android:layout_marginStart="41dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginBottom="40dp"
-        android:background="@android:color/white"
-        android:text="@string/historyShow"
-        android:visibility="invisible"
-        android:textColor="@color/sysLtGray"
-        android:textSize="25sp" />
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/historyView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:layout_gravity="center"
+            android:layout_marginStart="41dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="48dp"
+            android:layout_marginBottom="40dp"
+            android:background="@android:color/white"
+            android:text="@string/historyShow"
+            android:visibility="invisible"
+            android:textColor="@color/sysLtGray"
+            android:textSize="45sp" />
+
+    </ScrollView>
+
 
 </LinearLayout>

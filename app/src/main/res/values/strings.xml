@@ -22,4 +22,5 @@
     <string name="historyShow">Show History</string>
     <string name="btn_Nohistory">Standard - No History</string>
     <string name="btn_withHistory">Advance - With History</string>
+    <string name="errorMessage">Invalid Input Reminder</string>
 </resources>

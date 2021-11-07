@@ -22,9 +22,6 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".SecondActivity"
-            android:exported="false" />
     </application>
 
 </manifest>
